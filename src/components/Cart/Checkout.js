@@ -40,11 +40,18 @@ const Checkout = (props) => {
       enteredStreetIsValid &&
       enteredCityIsValid &&
       enteredPostalCodeIsValid;
+
+    if (!formIsValid) {
+      return;
+    }
+    //submit cart data
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      postalCode: enteredPostalCode,
+      city: enteredCity,
+    });
   };
-  //   if (!formIsValid) {
-  //     return;
-  //   }
-  //submit cart data
   const nameControlClasses = `${classes.control} ${
     formInputsValidity.name ? "" : classes.invalid
   }`;
